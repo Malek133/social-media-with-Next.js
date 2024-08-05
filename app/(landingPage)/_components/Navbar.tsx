@@ -5,21 +5,24 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import { cn } from "@/lib/utils";
 import { Button } from '@/components/ui/button';
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Menu } from 'lucide-react';
+import { Menu,Diff } from 'lucide-react';
+
 import {
   Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
+   SheetClose,
+   SheetContent,
+   SheetDescription,
+   SheetFooter,
+   SheetHeader,
+   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-// import Image from "next/image";
-// import Nextjs from '../../../public/Nexttjpg.jpg'
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const NavLinks = [
   { label: "Home", href: "/" },
@@ -89,8 +92,15 @@ const Navbar = () => {
               {label}
             </Link>
           ))}
+          
+          <UserButton />
         </div>
         </SheetHeader>
+        <SignedOut>
+                <SignInButton mode="modal">
+                  <Button>Log In</Button>
+                </SignInButton>
+              </SignedOut>
          
       </SheetContent>
     </Sheet>
@@ -98,7 +108,31 @@ const Navbar = () => {
         
          <ModeToggle />
 
-        <Button className='mx-4'>Log In</Button>  
+        
+        <SignedOut>
+          <div className='md:block hidden'>
+            <SignInButton>
+              <Button className='mx-4'>Log In</Button>
+            </SignInButton>
+          </div>
+        </SignedOut>
+
+        <SignedIn>
+          <Link href={'/story'}>
+            <Button className='mx-4'>
+            <Diff />
+              <span className='md:block hidden'>
+                
+                Create a story</span>
+            </Button>
+          </Link>
+        </SignedIn>
+       <span className='md:block hidden'>
+        <UserButton />
+        </span> 
+
+
+
         </div>
        
       </div>
