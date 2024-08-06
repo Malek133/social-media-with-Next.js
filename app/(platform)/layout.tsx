@@ -1,4 +1,5 @@
 import Header from "./_components/Header"
+import DesktopSidebar from "./_components/desktopSidebar"
 
 
 const layout = ({children}: 
@@ -8,7 +9,7 @@ const layout = ({children}:
       <Header />
       <div className='h-full flex items-start 
       md:space-x-5'>
-            {/* <DesktopSidebar /> */}
+            <DesktopSidebar />
             {children}
         </div>
       </div>

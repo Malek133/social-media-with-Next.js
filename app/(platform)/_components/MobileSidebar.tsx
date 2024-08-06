@@ -23,7 +23,7 @@ const MobileSidebar = () => {
     const pathname = usePathname();
   return (
     <Sheet>
-    <SheetTrigger> 
+    <SheetTrigger className='md:hidden block '> 
     <Menu className="h-6 w-6" />
     </SheetTrigger>
     <SheetContent className="p-12 space-y-2" side="left">
