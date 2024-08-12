@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma:seed":"prisma db seed",
-    "vercle-build":"prisma generate && prisma migrate deploy && next build"
+    "postinstall": "prisma generate"
+   
     
   },
   "dependencies": {
