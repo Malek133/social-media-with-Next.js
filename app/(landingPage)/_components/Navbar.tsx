@@ -105,10 +105,6 @@ const Navbar = () => {
       </SheetContent>
     </Sheet>
          
-        
-         <ModeToggle />
-
-        
         <SignedOut>
           <div className='md:block hidden'>
             <SignInButton>
@@ -127,9 +123,14 @@ const Navbar = () => {
             </Button>
           </Link>
         </SignedIn>
+
        <span className='md:block hidden'>
         <UserButton />
         </span> 
+        <span className='mx-3'>
+          <ModeToggle />
+        </span>
+        
 
 
 

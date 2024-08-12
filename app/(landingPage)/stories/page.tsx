@@ -1,3 +1,4 @@
+
 import prisma from '@/prisma/client';
 import React from 'react'
 import {
@@ -15,7 +16,12 @@ import {
   import { ArrowRight, ImageIcon } from "lucide-react";
 import ReadStory from '@/components/readStory';
 
+
+
 const StoriesLaningPage = async () => {
+  
+   
+
     const stories = await prisma.story.findMany({
         orderBy: {
           createdAt: "desc",
@@ -40,6 +46,7 @@ const StoriesLaningPage = async () => {
          {stories.map((story) => (
         <Card key={story.id}>
           {
+            
               story.image ? (
                   <div className="w-full h-52 aspect-video relative rounded-md">
                       <Image
@@ -71,6 +78,7 @@ const StoriesLaningPage = async () => {
                <SaveForm saves={saves} 
                story={story} />  
            </CardFooter>
+           
         </Card>
        ))} 
     </div>

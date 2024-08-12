@@ -4,7 +4,9 @@ import React from 'react'
 import Image from "next/image"
 import homej from '../../../public/homej.jpg'
 
+
 const hero = () => {
+  
   return (
     <section className='flex flex-col items-center justify-center py-32 
     text-center space-y-3 min-h-full px-5'>
