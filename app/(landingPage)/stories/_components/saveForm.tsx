@@ -36,11 +36,13 @@ const SaveForm = ({ saves,story }: Props) => {
     
           if (res.status === 201) {
             router.refresh();
-            toast("Story is saved");
+            toast("Story is saved",{
+              className:"mx-[-150%] bg-blue-500 text-white"
+          });
           }
         } catch (error) {
           toast("Something went wrong", {
-            className: "bg-rose-500 text-white",
+            className: "mx-[-150%] bg-rose-500 text-white",
           });
         }
       };

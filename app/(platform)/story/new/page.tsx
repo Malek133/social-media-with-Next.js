@@ -26,7 +26,7 @@ import { toast } from "sonner"
 const formSchema = z.object({
   title: z.string().min(5,{message:"title is require"}).max(500),
   story: z.string().min(15,{message:"Descreption is require"}).max(5000),
-   image: z.any().optional(),
+  //  image: z.any().optional(),
 })
 
 const StoryPage =  () => {
@@ -40,7 +40,7 @@ const StoryPage =  () => {
     defaultValues: {
       title: "",
       story:"",
-      image:""
+      // image:null
     },
   })
  
@@ -48,7 +48,15 @@ const StoryPage =  () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
      setIsSubmitting(true)
-     toast("Story is creating...")
+
+    //  const formData = new FormData();
+    //   formData.append("title", values.title);
+    //   formData.append("story", values.story);
+    //   formData.append("userId", userId!);
+
+    //   if (values.image && values.image[0]) {
+    //     formData.append("image", values.image[0]);  // Add image file to formData
+    //   }
     
 
     const res = await axios.post("/api/story", {
@@ -58,7 +66,7 @@ const StoryPage =  () => {
      if(res.status === 201) {
       
         toast("Story is Created", {
-            className: "bg-emerald-500 text-white"
+            className: "mx-[-150%] bg-emerald-500 text-white"
         })
          router.push(`/story`)
          router.refresh()
@@ -120,25 +128,7 @@ const StoryPage =  () => {
             </FormItem>
           )}
         />
-
-<FormField
-          control={form.control}
-          name="image"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Image</FormLabel>
-              <FormControl>
-                <Input placeholder="Url..." {...field} />
-              </FormControl>
-              <FormDescription>
-                This is url for your image.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-          
+   
         <Button type="submit">
           {isSubmitting && <Loader /> }
           Creat

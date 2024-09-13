@@ -3,7 +3,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { Loader, Trash } from "lucide-react";
+import { Loader,X} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -21,7 +21,9 @@ const RemoveSave = ({ saveId }: Props) => {
 
         if(res.status === 201) {
             router.refresh()
-            toast("Save is removed")
+            toast("Save is removed",{
+              className:"mx-[-150%] bg-blue-500 text-white"
+          })
         }
     } catch (error) {
         toast("Something went wrong", {
@@ -34,7 +36,7 @@ const RemoveSave = ({ saveId }: Props) => {
 
   return (
     <Button disabled={isRemoving} variant={"destructive"} onClick={handleRemoveSave}>
-      {isRemoving ? <Loader className="animate-spin" /> : <Trash />}
+      {isRemoving ? <Loader className="animate-spin" /> : <X />}
     </Button>
   );
 };
